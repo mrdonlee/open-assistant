@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'app.dart';
+import 'chat_screen.dart';
 
 void main() {
   runApp(const OpenWebUI());
