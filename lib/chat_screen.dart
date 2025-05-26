@@ -13,6 +13,23 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: ChatInput()));
+    return Scaffold(
+      appBar: AppBar(title: const Text('Chat')),
+      drawer: Drawer(),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView(
+              children: [
+                ListTile(title: Text('Item 1')),
+                ListTile(title: Text('Item 2')),
+                ListTile(title: Text('Item 3')),
+              ],
+            ),
+          ),
+          ChatInput(),
+        ],
+      ),
+    );
   }
 }
