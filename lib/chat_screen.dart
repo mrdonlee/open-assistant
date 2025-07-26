@@ -19,25 +19,35 @@ class _ChatScreenState extends State<ChatScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double chatWidth = screenWidth * 0.5;
+
     return Scaffold(
       appBar: AppBar(title: const Text('Chat')),
       drawer: Drawer(),
       body: Padding(
         padding: const EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: _messages.length,
-                itemBuilder: (context, index) {
-                  return ListTile(title: Text(_messages[index]));
-                },
-              ),
+        child: Center(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: chatWidth),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: _messages.length,
+                    itemBuilder:
+                        (_, int index) => Align(
+                          alignment: Alignment.centerRight,
+                          child: Text(_messages[index]),
+                        ),
+                  ),
+                ),
+                ChatInput(sendMessage: _sendMessage),
+                SizedBox(height: 20),
+              ],
             ),
-            ChatInput(sendMessage: _sendMessage),
-            SizedBox(height: 20),
-          ],
+          ),
         ),
       ),
     );
