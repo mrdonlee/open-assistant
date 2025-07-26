@@ -2,21 +2,27 @@ import 'package:flutter/material.dart';
 import 'chat_screen.dart';
 
 void main() {
-  runApp(const OpenWebUI());
+  runApp(const OpenAssistant());
 }
 
-class OpenWebUI extends StatelessWidget {
-  const OpenWebUI({super.key});
+class OpenAssistant extends StatelessWidget {
+  const OpenAssistant({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Open WebUI',
+      title: 'Open Assistant',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.white,
+          brightness: Brightness.dark,
+        ),
       ),
-      home: const ChatScreen(),
+      home: SafeArea(
+        maintainBottomViewPadding: true,
+        child: const ChatScreen(),
+      ),
     );
   }
 }

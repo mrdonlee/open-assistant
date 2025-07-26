@@ -8,12 +8,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:open_webui/main.dart';
+import 'package:open_assistant/main.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const OpenWebUI());
+    await tester.pumpWidget(const OpenAssistant());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
