@@ -9,6 +9,14 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  final List<String> _messages = [];
+
+  void _sendMessage(String message) {
+    setState(() {
+      _messages.add(message);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,15 +28,15 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Expanded(
-              child: ListView(
-                children: [
-                  ListTile(title: Text('Item 1')),
-                  ListTile(title: Text('Item 2')),
-                  ListTile(title: Text('Item 3')),
-                ],
+              child: ListView.builder(
+                itemCount: _messages.length,
+                itemBuilder: (context, index) {
+                  return ListTile(title: Text(_messages[index]));
+                },
               ),
             ),
-            ChatInput(),
+            ChatInput(sendMessage: _sendMessage),
+            SizedBox(height: 20),
           ],
         ),
       ),
