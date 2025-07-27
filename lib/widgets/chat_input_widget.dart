@@ -24,7 +24,6 @@ class _ChatInput extends State<ChatInput> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 600,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10),
