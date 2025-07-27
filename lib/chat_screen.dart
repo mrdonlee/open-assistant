@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:open_assistant/widgets/chat_bubble_widget.dart';
 import 'widgets/chat_input_widget.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -37,10 +38,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   child: ListView.builder(
                     itemCount: _messages.length,
                     itemBuilder:
-                        (_, int index) => Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(_messages[index]),
-                        ),
+                        (_, int index) =>
+                            ChatBubble(isUser: true, message: _messages[index]),
                   ),
                 ),
                 ChatInput(sendMessage: _sendMessage),
