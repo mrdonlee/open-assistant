@@ -26,21 +26,21 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Chat')),
       drawer: Drawer(),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
+      body: SingleChildScrollView(
         child: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: chatWidth),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: _messages.length,
-                    itemBuilder:
-                        (_, int index) =>
-                            ChatBubble(isUser: true, message: _messages[index]),
-                  ),
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: _messages.length,
+                  itemBuilder:
+                      (_, int index) => ChatBubble(
+                        isUser: index % 2 == 0,
+                        message: _messages[index],
+                      ),
                 ),
                 ChatInput(sendMessage: _sendMessage),
                 SizedBox(height: 20),
