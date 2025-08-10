@@ -43,6 +43,7 @@ repos:
     rev: v1.32.0
     hooks:
       - id: typos
+        files: ^client/lib
 
   - repo: https://github.com/mrtazz/checkmake.git
     rev: 0.2.2
